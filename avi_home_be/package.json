@@ -1,0 +1,19 @@
+{
+  "name": "avi_home_be",
+  "version": "1.0.0",
+  "description": "Proyecto de domotica",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "guillermo sanchez",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "graphql-import": "^0.7.1",
+    "graphql-tools": "^4.0.5",
+    "graphql-yoga": "^1.18.1",
+    "mongoose": "^5.6.9"
+  }
+}

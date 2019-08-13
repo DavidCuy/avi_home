@@ -1,0 +1,20 @@
+type Query {
+}
+
+type Mutation {
+}
+
+type User {
+    id: ID
+    name:String!
+    email:String!
+    password:String!
+}
+
+type Home {
+    id:ID
+    description:String!
+    location:String!
+    createdAt:String!
+    user:User!
+}
