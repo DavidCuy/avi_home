@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+.app-primary-color {
+    background-color: #00bfa5 !important;
+    color: #000000;
+}
+
+.app-ligth-color {
+    background-color: #5df2d6 !important;
+    color: #000000;
+}
+
+.app-dark-color {
+    background-color: #008e76 !important;
+    color: #000000;
+}
