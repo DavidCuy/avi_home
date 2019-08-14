@@ -1,9 +1,10 @@
-//dotenv = require('dotenv').config(); //Libreria para acceder a las variables del .env
+dotenv = require('dotenv').config(); //Libreria para acceder a las variables del .env
 const { GraphQLServer } = require('graphql-yoga');
 const { importSchema } = require('graphql-import');
 const { makeExecutableSchema } = require('graphql-tools');
 const typeDefs = importSchema('./src/schema.graphql');//Definimos constantes necesarias para GraphQL
 const mongoose = require('mongoose'); //Paquete para MongoDB connector
+const { AuthDirective } = require('./resolvers/directive');
 
 /**
  * Conexion a mondo-db
@@ -26,10 +27,12 @@ const resolvers = {
   }
 };
 
-
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers
+  resolvers,
+  schemaDirectives: {
+      auth: AuthDirective
+  }
 })
 
 //Variable constante para el server de GraphQL

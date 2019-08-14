@@ -1,7 +1,16 @@
 type Query {
+    userByEmail(name:String!):User! 
+    userById(id:ID):User! 
 }
 
 type Mutation {
+    createUsers(data:inputUser!):User
+    login(data:inputLogin!):Token
+}
+
+type Token {
+    token:String!
+    message:String!
 }
 
 type User {
@@ -11,10 +20,13 @@ type User {
     password:String!
 }
 
-type Home {
-    id:ID
-    description:String!
-    location:String!
-    createdAt:String!
-    user:User!
+input inputUser {
+    name:String!
+    email:String!
+    password:String!
+}
+
+input inputLogin {
+    email:String!
+    password:String!
 }
