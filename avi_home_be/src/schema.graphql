@@ -1,9 +1,9 @@
 type Query {
     Homes:[Home]
-    Rooms:[Home]
-    Devices:[Home]
-    Categories:[Home]
-    UsersList:[Home]
+    Rooms:[Room]
+    Devices:[Device]
+    Categories:[Category]
+    UsersList:[User]
 }
 
 type Mutation {
