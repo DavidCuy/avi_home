@@ -10,7 +10,8 @@ const Device = require('../models/Device');
  * @param {*} args 
  */
 const Homes = async (root, args) => {
-    let homes = await Home.find().populate('user');
+    let userobj = await Users.findById(args.name);
+    let homes = await Home.find({user: userobj}).populate('user');
     return homes;
 }
 
