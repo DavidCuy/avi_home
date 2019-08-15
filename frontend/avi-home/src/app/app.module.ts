@@ -10,10 +10,15 @@ import { PagesModule } from './pages/pages.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { FormLoaderComponent } from './shared/form-loader/form-loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormLoaderComponent,
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
@@ -26,8 +31,21 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
   ],
-  providers: [],
+  providers: [{
+    provide: APOLLO_OPTIONS,
+    useFactory: (httpLink: HttpLink) => {
+      return {
+        cache: new InMemoryCache(),
+        link: httpLink.create({
+          uri: 'http://localhost:4000'
+        })
+      };
+    },
+    deps: [HttpLink]
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
