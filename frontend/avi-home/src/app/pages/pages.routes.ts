@@ -9,7 +9,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 const PAGES_ROUTES: Routes = [
   {
     path: '',
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
     component: PageComponent,
     children: [
       { path: 'home', component: HomeComponent, data: { title: 'AVi - Home'} },

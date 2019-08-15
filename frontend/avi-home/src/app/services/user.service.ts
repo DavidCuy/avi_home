@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ENDPOINT } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Apollo } from 'apollo-angular';
+import jwt_decode from 'jwt-decode';
+
+import { USER_MUTATORS } from '../graphql/user.gql';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +17,9 @@ export class UserService {
   token: string;
   urlImage: string;
 
-  constructor(private _httpClient: HttpClient, private _router: Router) {
+  constructor(private _httpClient: HttpClient,
+              private _router: Router,
+              private _apollo: Apollo) {
     this.fromStorage();
   }
 
@@ -25,50 +31,48 @@ export class UserService {
   fromStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.user = JSON.parse(localStorage.getItem('user'));
-      this.urlImage = localStorage.getItem('imageUrl');
+      this.user = jwt_decode(this.token);
     } else {
       this.token = '';
       this.user = null;
-      this.urlImage = '';
     }
   }
 
   logout( ) {
     this.token = ''; this.user = null;
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('imageUrl');
-    localStorage.removeItem('business');
     this._router.navigate(['/login']);
   }
 
   login( user: any, rememberMe: boolean = false ) {
+    const userData: any = {
+      email: user.email,
+      password: user.password
+    };
     if (rememberMe) {
       localStorage.setItem('email', user.email);
     } else {
       localStorage.removeItem('email');
     }
 
-    const url = ENDPOINT + '/login';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    });
-    return this._httpClient.post( url, user, { headers: headers } )
-      .pipe(map( (resp: any) => {
-        localStorage.setItem('id', resp.user.id);
-        localStorage.setItem('token', resp.token);
-        localStorage.setItem('user', JSON.stringify(resp.user));
-        this.user = resp.user;
-
+    return this._apollo.mutate({
+      mutation: USER_MUTATORS.login,
+      variables: {
+        userData: userData
+      }
+    }).pipe(map( (resp) => {
+      const retResp = resp.data.login;
+      if (retResp.message === 'OK') {
+        localStorage.setItem('token', retResp.token);
+        this.user = jwt_decode(retResp.token);
+        this.fromStorage();
         return true;
-      }));
-  }
-
-  clearImageStorage() {
-    localStorage.setItem('imageUrl', '');
-    this.fromStorage();
+      }
+      return {
+        success: false,
+        message: retResp.token
+      };
+    }));
   }
 
   register(user: any) {

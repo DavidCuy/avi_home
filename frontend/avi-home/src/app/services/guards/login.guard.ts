@@ -14,7 +14,6 @@ export class LoginGuard implements CanActivate {
     if ( this._userService.isLoged() ) {
       return true;
     }
-    console.log('Para el login we');
     this._router.navigate(['/login']);
     return false;
   }
