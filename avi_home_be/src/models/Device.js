@@ -12,9 +12,16 @@ const Device = new Schema({
         type: String,
         require: true
     },
+    value: {
+        type: Number
+    },
     category: {
         type: Schema.Types.ObjectId,
         ref: 'Category'
+    },
+    room: {
+        type: Schema.Types.ObjectId,
+        ref: 'Room'
     }
 });
 

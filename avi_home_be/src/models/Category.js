@@ -12,9 +12,6 @@ const Category = new Schema({
         type: String,
         require: true
     },
-    value: {
-        type: Number
-    },
     createdAt: {
         type: String,
         require: true

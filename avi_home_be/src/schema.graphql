@@ -1,13 +1,21 @@
 type Query {
-    userByEmail(name:String!):User! 
-    userById(id:ID):User! 
+    Homes:[Home]
+    Rooms:[Home]
+    Devices:[Home]
+    Categories:[Home]
+    UsersList:[Home]
 }
 
 type Mutation {
+    createHome(data:inputHome!):Home
+    createRoom(data:inputRoom!):Room
+    createCategory(data:inputCategory!):Category
+    createDevice(data:inputDevice!):Device
     createUsers(data:inputUser!):User
     login(data:inputLogin!):Token
 }
 
+#***************TIPOS*****************
 type Token {
     token:String!
     message:String!
@@ -20,10 +28,68 @@ type User {
     password:String!
 }
 
+type Home {
+    id: ID
+    name:String!
+    location:String!
+    createdAt:String!
+    user:User!
+}
+
+type Room {
+    id: ID
+    name:String!
+    createdAt:String!
+    home:Home!
+}
+
+type Device {
+    id: ID
+    name:String!
+    createdAt:String!
+    value:Int!
+    category:Category!
+    room:Room!
+}
+
+type Category {
+    id: ID
+    name:String!
+    description:String!
+    createdAt:String!
+}
+#***************INPUTS*****************
 input inputUser {
     name:String!
     email:String!
     password:String!
+}
+
+input inputHome {
+    name:String!
+    location:String!
+    createdAt:String!
+    user:ID!
+}
+
+input inputRoom {
+    name:String!
+    createdAt:String!
+    home:ID!
+}
+
+input inputCategory {
+    name:String!
+    description:String!
+    createdAt:String!
+}
+
+input inputDevice {
+    name:String!
+    createdAt:String!
+    value:Int!
+    category:ID!
+    room:ID!
 }
 
 input inputLogin {

@@ -20,10 +20,24 @@ mongoose.connect(process.env.MONGOURI,
   }
 );
 
+const { Homes, Rooms, Devices, Categories, UsersList } = require('./resolvers/Querys');
+const { createUsers, createHome, createRoom, createCategory, createDevice, login } = require('./resolvers/Mutations');
+
 const resolvers = {
   Query: {
+    Homes,
+    Rooms,
+    Devices,
+    Categories,
+    UsersList
   },
   Mutation: {
+    createUsers,
+    createHome,
+    createRoom,
+    createCategory,
+    createDevice,
+    login
   }
 };
 
