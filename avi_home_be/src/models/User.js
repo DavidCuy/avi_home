@@ -27,5 +27,5 @@ User.pre('save', function(next){
     })
 })
 
-const user = mongoose.model('Users', User);
+const user = mongoose.model('UsersAvi', User);
 module.exports = user;
