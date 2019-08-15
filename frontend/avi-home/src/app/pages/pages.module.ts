@@ -9,6 +9,8 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { PageRoutingModule } from './pages.routes';
 import { HomeComponent } from './home/home.component';
+import { FloatinActionButtonComponent } from '../shared/floatin-action-button/floatin-action-button.component';
+import { RoomsComponent } from './rooms/rooms.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { HomeComponent } from './home/home.component';
     SidebarComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    FloatinActionButtonComponent,
+    HomeComponent,
+    RoomsComponent
   ],
   imports: [
     CommonModule,

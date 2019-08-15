@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
     console.log('Home');
+  }
+
+  showRoom(houseId) {
+    this._router.navigate([`home/${houseId}`]);
+  }
+
+  deleteHome(id) {
+    swal(id);
   }
 
 }

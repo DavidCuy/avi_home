@@ -1,1 +1,175 @@
-<p>register works!</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AVi Energy Labs - Registro</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.png" /> </head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper auth p-0 theme-two">
+                <div class="row d-flex align-items-stretch">
+                    <div class="col-md-4 banner-section d-none d-md-flex align-items-stretch justify-content-center">
+                        <div class="slide-content bg-2"> </div>
+                    </div>
+                    <div class="col-12 col-md-8 h-100 bg-white">
+                        <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column">
+                            <div class="nav-get-started">
+                                <p>¿Ya tienes cuenta?</p>
+                                <a class="btn get-started-btn" routerLink="/login">Inicia sesión</a>
+                            </div>
+                            <!--<app-form-loader [submiting]="submiting"></app-form-loader>-->
+                            <form ngNativeValidate [formGroup]="form" (ngSubmit)="register()">
+                                <h3 class="mr-auto">Registro</h3>
+                                <p class="mb-5 mr-auto">Ingresa tus credenciales acontinuación.</p>
+                                <div class="form-group" [ngClass]="{ 'has-error': form.controls['name'].invalid && !form.controls['name'].pristine }">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                            <i
+                            *ngIf="form.controls['name'].errors && !form.controls['name'].pristine"
+                            class="mdi mdi-close-circle-outline"></i>
+                          <i
+                            *ngIf="!form.controls['name'].errors || form.controls['name'].pristine"
+                            class="mdi mdi-check-circle-outline"
+                             [ngClass]="{ 'has-success': form.controls['name'].valid && form.controls['name'].touched }"></i>
+                          </span>
+                                        </div>
+                                        <input formControlName="name" name="name" type="text" class="form-control" placeholder="Nombre de usuario">
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['name'].errors?.minlength">
+                                        <small>Por lo menos {{ form.controls['name'].errors.minlength.requiredLength }}</small>
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['name'].errors?.required && form.controls['name'].touched">
+                                        <small>El nombre es necesario</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                              <i class="mdi mdi-close-circle-outline"
+                              *ngIf="form.controls['email'].status !== 'PENDING' && (form.controls['email'].invalid && !form.controls['email'].pristine)"></i>
+
+                           <i class="mdi mdi-check-circle-outline"
+                              [ngClass]="{ 'has-success':  form.controls['email'].valid }"
+                              *ngIf="form.controls['email'].status !== 'PENDING' && (form.controls['email'].valid || form.controls['email'].pristine)"></i>
+
+                           <i class="fa fa-refresh fa-spin"
+                              *ngIf="form.controls['email'].status === 'PENDING'"></i>
+                          </span>
+                                        </div>
+                                        <input formControlName="email" name="email" type="email" class="form-control" placeholder="Correo electrónico">
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['email'].errors?.email || form.controls['email'].errors?.pattern">
+                                        <small>El correo no tiene formato correcto</small>
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['email'].errors?.required && form.controls['email'].touched">
+                                        <small>El correo electrónico es necesario</small>
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['email'].errors?.exists && form.controls['email'].touched">
+                                        <small>El correo electrónico ya se encuentra registrado</small>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': form.controls['password'].invalid && !form.controls['password'].pristine }">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                              <i
+                              *ngIf="form.controls['password'].errors && !form.controls['password'].pristine"
+                              class="mdi mdi-close-circle-outline"></i>
+                            <i
+                              *ngIf="!form.controls['password'].errors || form.controls['password'].pristine"
+                              class="mdi mdi-check-circle-outline"
+                              [ngClass]="{ 'has-success': form.controls['password'].valid && form.controls['password'].touched }"></i>
+                          </span>
+                                        </div>
+                                        <input formControlName="password" name="password" type="password" class="form-control" placeholder="Contraseña">
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['password'].errors?.minlength">
+                                        <small>Por lo menos {{ form.controls['password'].errors.minlength.requiredLength }}</small>
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.controls['password'].errors?.required && form.controls['password'].touched">
+                                        <small>La contraseña es necesaria</small>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': form.errors?.noRepeat && form.controls['c_password'].touched }">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                              <i
+                              *ngIf="form.errors?.noRepeat && form.controls['c_password'].touched"
+                              class="mdi mdi-close-circle-outline"></i>
+                            <i
+                              *ngIf="!form.errors?.noRepeat"
+                              class="mdi mdi-check-circle-outline"
+                              [ngClass]="{ 'has-success': form.controls['c_password'].touched }"></i>
+                          </span>
+                                        </div>
+                                        <input formControlName="c_password" name="c_password" type="password" class="form-control" placeholder="Confirmar contraseña">
+                                    </div>
+                                    <div class="form-control-feedback has-error" *ngIf="form.errors?.noRepeat && form.controls['c_password'].touched">
+                                        <small>Las contraseñas no coinciden</small>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex justify-content-between">
+                                    <div class="form-check form-check-flat mt-0">
+                                        <label class="form-check-label">
+                        <input formControlName="accept_conditions" name="accept_conditions" type="checkbox" class="form-check-input" checked>Estoy de acuerdo con los términos </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button [disabled]="!form.valid" type="submit" class="btn btn-primary submit-btn btn-block">Registrar</button>
+                                </div>
+                                <div class="wrapper mt-5 text-gray">
+                                    <p class="footer-text">Copyright © {{ year }} Studio AV&reg;. Todos los derechos reservados.</p>
+                                    <ul class="auth-footer text-gray">
+                                        <li>
+                                            <a href="#">Términos y condiciones</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Política de cookies</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="/assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/assets/js/shared/off-canvas.js"></script>
+    <script src="/assets/js/shared/hoverable-collapse.js"></script>
+    <script src="/assets/js/shared/misc.js"></script>
+    <script src="/assets/js/shared/settings.js"></script>
+    <script src="/assets/js/shared/todolist.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
