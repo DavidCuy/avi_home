@@ -1,17 +1,19 @@
+directive @auth on FIELD_DEFINITION | FIELD
+
 type Query {
-    Homes:[Home]
-    Rooms:[Room]
-    Devices:[Device]
-    Categories:[Category]
+    Homes(name:String!):[Home] @auth
+    Rooms:[Room] @auth
+    Devices:[Device] @auth
+    Categories:[Category] @auth
     UsersList:[User]
 }
 
 type Mutation {
-    createHome(data:inputHome!):Home
-    createRoom(data:inputRoom!):Room
-    createCategory(data:inputCategory!):Category
-    createDevice(data:inputDevice!):Device
-    createUsers(data:inputUser!):User
+    createHome(data:inputHome!):Home @auth
+    createRoom(data:inputRoom!):Room @auth
+    createCategory(data:inputCategory!):Category @auth
+    createDevice(data:inputDevice!):Device @auth
+    createUsers(data:inputUser!):User @auth
     login(data:inputLogin!):Token
 }
 

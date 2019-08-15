@@ -3,8 +3,9 @@ const { GraphQLServer } = require('graphql-yoga');
 const { importSchema } = require('graphql-import');
 const { makeExecutableSchema } = require('graphql-tools');
 const typeDefs = importSchema('./src/schema.graphql');//Definimos constantes necesarias para GraphQL
-const mongoose = require('mongoose'); //Paquete para MongoDB connector
 const { AuthDirective } = require('./resolvers/directive');
+const verifyToken = require('./utils/verifyToken');
+const mongoose = require('mongoose'); //Paquete para MongoDB connector
 
 /**
  * Conexion a mondo-db
@@ -52,6 +53,6 @@ const schema = makeExecutableSchema({
 //Variable constante para el server de GraphQL
 const server = new GraphQLServer({ 
   schema,
-  context: async({request}) => request
+  context: async({request}) => verifyToken(request)
 })
 server.start(() => console.log('Server is running on localhost:4000'))
