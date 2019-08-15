@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Avi Energy Labs - Inicio de sesión</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/puse-icons-feather/feather.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href=/assets/css/shared/style.css ">
+    <!-- endinject -->
+    <link rel="shortcut icon " href="/assets/images/favicon.png " /> </head>
+
+<body>
+    <div class="container-scroller ">
+        <div class="container-fluid page-body-wrapper full-page-wrapper ">
+            <div class="content-wrapper auth p-0 theme-two ">
+                <div class="row d-flex align-items-stretch ">
+                    <div class="col-md-4 banner-section d-none d-md-flex align-items-stretch justify-content-center ">
+                        <div class="slide-content bg-1 "> </div>
+                    </div>
+                    <div class="col-12 col-md-8 h-100 bg-white ">
+                        <div class="auto-form-wrapper d-flex align-items-center justify-content-center flex-column ">
+                            <div class="nav-get-started ">
+                                <p>¿No eres usuario?</p>
+                                <a class="btn get-started-btn " routerLink='/register'>Crea una cuenta</a>
+                            </div>
+                            <!--<app-form-loader [submiting]="submiting "></app-form-loader>-->
+                            <!--<form ngNativeValidate (ngSubmit)="login(loginForm); " #loginForm="ngForm ">-->
+                              <form>
+                                <h3 class="mr-auto ">Hola! Bienvenido</h3>
+                                <p class="mb-5 mr-auto ">Introduzca sus credenciales acontinuación.</p>
+                                <div class="form-group ">
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend ">
+                                            <span class="input-group-text ">
+                            <i class="mdi mdi-account-outline "></i>
+                          </span>
+                                        </div>
+                                        <input name="email " type="email " class="form-control " placeholder="Correo electrónico " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$ " required> </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="input-group ">
+                                        <div class="input-group-prepend ">
+                                            <span class="input-group-text ">
+                            <i class="mdi mdi-lock-outline "></i>
+                          </span>
+                                        </div>
+                                        <input ngModel name="password " type="password " class="form-control " placeholder="Contraseña " required> </div>
+                                </div>
+                                <div class="form-group ">
+                                    <button type="submit " class="btn btn-primary submit-btn ">Iniciar sesión</button>
+                                </div>
+                                <div class="form-group d-flex justify-content-between ">
+                                    <div class="form-check form-check-flat mt-0 ">
+                                        <label class="form-check-label ">
+                            <input name="rememberMe " type="checkbox " class="form-check-input "> Mantenerme logueado </label>
+                                    </div>
+                                    <a href="#/recoverPassword " class="text-small forgot-password text-black ">Olvidé la contraseña</a>
+                                </div>
+                                <div class="wrapper mt-5 text-gray ">
+                                  <!-- Aqui va el año-->
+                                    <p class="footer-text ">Copyright © 2019 Studio AV&reg;. Todos los derechos reservados.</p>
+                                    <ul class="auth-footer text-gray ">
+                                        <li>
+                                            <a href="# ">Términos y condiciones</a>
+                                        </li>
+                                        <li>
+                                            <a href="# ">Políticas de cookies</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="/assets/vendors/js/vendor.bundle.base.js "></script>
+    <script src="/assets/vendors/js/vendor.bundle.addons.js "></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/assets/js/shared/off-canvas.js "></script>
+    <script src="/assets/js/shared/hoverable-collapse.js "></script>
+    <script src="/assets/js/shared/misc.js "></script>
+    <script src="/assets/js/shared/settings.js "></script>
+    <script src="/assets/js/shared/todolist.js "></script>
+    <!-- endinject -->
+</body>
+
+</html>
