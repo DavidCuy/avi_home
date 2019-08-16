@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoomService } from '../../services/room.service';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-rooms',
