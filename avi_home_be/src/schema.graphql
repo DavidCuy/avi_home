@@ -43,6 +43,7 @@ type Room {
     name:String!
     createdAt:String!
     home:Home!
+    devices:[Device]
 }
 
 type Device {

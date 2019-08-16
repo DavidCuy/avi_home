@@ -15,7 +15,11 @@ const Room = new Schema({
     home: {
         type: Schema.Types.ObjectId,
         ref: 'Home'
-    }
+    },
+    devices: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Device'
+    }]
 });
 
 

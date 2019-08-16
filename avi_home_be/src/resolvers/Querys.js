@@ -9,9 +9,9 @@ const Device = require('../models/Device');
  * @param {*} root 
  * @param {*} args 
  */
-const Homes = async (root, args) => {
+const Homes = async(root, args) => {
     let userobj = await Users.findById(args.name);
-    let homes = await Home.find({user: userobj}).populate('user');
+    let homes = await Home.find({ user: userobj }).populate('user');
     return homes;
 }
 
@@ -20,9 +20,13 @@ const Homes = async (root, args) => {
  * @param {*} root 
  * @param {*} args 
  */
-const Rooms = async (root, args) => {
+const Rooms = async(root, args) => {
     let homeobj = await Home.findById(args.name);
-    let rooms = await Room.find({home: homeobj}).populate('home');
+    let rooms = await Room.find({ home: homeobj }).populate('home');
+    for (let i = 0; i < rooms.length; i++) {
+        const devices = await Device.find({ room: rooms[i]._id });
+        rooms[i]._doc.devices = devices;
+    }
     return rooms;
 }
 
@@ -31,9 +35,9 @@ const Rooms = async (root, args) => {
  * @param {*} root 
  * @param {*} args 
  */
-const Devices = async (root, args) => {
+const Devices = async(root, args) => {
     let roomobj = await Room.findById(args.name);
-    let devices = await Device.find({room: roomobj}).populate('category').populate('room');
+    let devices = await Device.find({ room: roomobj }).populate('category').populate('room');
     return devices;
 }
 
@@ -42,7 +46,7 @@ const Devices = async (root, args) => {
  * @param {*} root 
  * @param {*} args 
  */
-const Categories = async (root, args) => {
+const Categories = async(root, args) => {
     let categories = await Category.find();
     return categories;
 }
@@ -52,7 +56,7 @@ const Categories = async (root, args) => {
  * @param {*} root 
  * @param {*} args 
  */
-const UsersList = async (root, args) => {
+const UsersList = async(root, args) => {
     let users = await Users.find();
     return users;
 }
