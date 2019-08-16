@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -14,30 +13,13 @@ export class HomeComponent implements OnInit {
   homes: any = [];
 
   constructor(private _router: Router,
-              private _apollo: Apollo) { }
+              private _homeService: HomeService) { }
 
   ngOnInit() {
     console.log('Home');
-    this._apollo.watchQuery({
-      query: gql`
-      {
-        Homes{
-          id
-          name
-          location
-          createdAt
-          user {
-            id
-            name
-            email
-          }
-        }
-      }`
-    }).valueChanges.subscribe(result => {
-      // @ts-ignore
-      this.homes = result.data.Homes;
-      console.log(this.homes);
-    });
+    this._homeService.getHomesByClient().subscribe((resp) => {
+      this.homes = resp;
+    })
   }
 
   showRoom(houseId) {

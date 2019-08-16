@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { FloatinActionButtonComponent } from '../shared/floatin-action-button/floatin-action-button.component';
 import { RoomsComponent } from './rooms/rooms.component';
 
-
 @NgModule({
   declarations: [
     PageComponent,
@@ -30,4 +29,6 @@ import { RoomsComponent } from './rooms/rooms.component';
     PageRoutingModule
   ]
 })
-export class PagesModule { }
+export class PagesModule {
+
+}

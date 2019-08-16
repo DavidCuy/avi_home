@@ -42,6 +42,7 @@ export class UserService {
     this.token = ''; this.user = null;
     localStorage.removeItem('token');
     this._router.navigate(['/login']);
+    this._apollo.getClient().resetStore();
   }
 
   login( user: any, rememberMe: boolean = false ) {
