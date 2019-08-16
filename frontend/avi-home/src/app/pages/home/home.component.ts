@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { HomeService } from '../../services/home.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,13 @@ export class HomeComponent implements OnInit {
   homes: any = [];
 
   constructor(private _router: Router,
-              private _homeService: HomeService) { }
+              private _homeService: HomeService,
+              private _userService: UserService) { }
 
   ngOnInit() {
-    console.log('Home');
-    this._homeService.getHomesByClient().subscribe((resp) => {
+    this._homeService.getHomesByClient(this._userService.user.id).subscribe((resp) => {
       this.homes = resp;
-    })
+    });
   }
 
   showRoom(houseId) {

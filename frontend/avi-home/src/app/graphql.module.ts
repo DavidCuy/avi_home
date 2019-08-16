@@ -13,9 +13,6 @@ export function createApollo(httpLink: HttpLink) {
     const token = localStorage.getItem('token');
 
     // Use the setContext method to set the HTTP headers.
-    console.log({
-      graphTOKEN: token
-    });
     operation.setContext({
         headers: {
             'Authorization': token ? `${token}` : ''

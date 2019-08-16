@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 grid-margin stretch-card">
+    <div *ngFor="let room of rooms" class="col-lg-4 col-md-6 col-sm-12 grid-margin stretch-card">
         <div class="card review-card">
             <div class="card-header header-sm d-flex justify-content-between align-items-center">
-                <h4 class="card-title">Nombre de la habitación</h4>
+                <h4 class="card-title">{{ room.name}}</h4>
                 <div class="wrapper d-flex align-items-center">
                     <div class="dropdown">
                         <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
