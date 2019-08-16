@@ -11,6 +11,7 @@ import { PageRoutingModule } from './pages.routes';
 import { HomeComponent } from './home/home.component';
 import { FloatinActionButtonComponent } from '../shared/floatin-action-button/floatin-action-button.component';
 import { RoomsComponent } from './rooms/rooms.component';
+import { DevicesComponent } from './devices/devices.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RoomsComponent } from './rooms/rooms.component';
     FooterComponent,
     FloatinActionButtonComponent,
     HomeComponent,
-    RoomsComponent
+    RoomsComponent,
+    DevicesComponent
   ],
   imports: [
     CommonModule,

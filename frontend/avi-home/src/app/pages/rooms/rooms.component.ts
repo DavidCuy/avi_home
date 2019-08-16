@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert';
+import { Router } from '@angular/router';
 import { RoomService } from '../../services/room.service';
-import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-rooms',
@@ -12,7 +13,8 @@ export class RoomsComponent implements OnInit {
   homeId: string = '';
   rooms: any = [];
 
-  constructor(private _activatedRoute: ActivatedRoute,
+  constructor(private _router: Router,
+              private _activatedRoute: ActivatedRoute,
               private _roomServices: RoomService) { }
 
   ngOnInit() {
@@ -24,4 +26,11 @@ export class RoomsComponent implements OnInit {
     });
   }
 
+  showDevices(roomId) {
+    this._router.navigate([`device/${roomId}`]);
+  }
+
+  deleteRoom(id) {
+    swal(id);
+  }
 }
