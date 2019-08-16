@@ -21,7 +21,8 @@ const Homes = async (root, args) => {
  * @param {*} args 
  */
 const Rooms = async (root, args) => {
-    let rooms = await Room.find().populate('home');
+    let homeobj = await Home.findById(args.name);
+    let rooms = await Room.find({home: homeobj}).populate('home');
     return rooms;
 }
 
@@ -31,8 +32,9 @@ const Rooms = async (root, args) => {
  * @param {*} args 
  */
 const Devices = async (root, args) => {
-    let devides = await Device.find().populate('category').populate('room');
-    return devides;
+    let roomobj = await Room.findById(args.name);
+    let devices = await Device.find({room: roomobj}).populate('category').populate('room');
+    return devices;
 }
 
 /**

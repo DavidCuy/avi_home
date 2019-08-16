@@ -2,8 +2,8 @@ directive @auth on FIELD_DEFINITION | FIELD
 
 type Query {
     Homes(name:String!):[Home] @auth
-    Rooms:[Room] @auth
-    Devices:[Device] @auth
+    Rooms(name:String!):[Room] @auth
+    Devices(name:String!):[Device] @auth
     Categories:[Category] @auth
     UsersList:[User]
 }

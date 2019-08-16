@@ -21,19 +21,21 @@ const createHome = async(root, args) => {
         user: args.data.user
     });
     const myHome = await newHome.save();
-    const home = await Home.find({ _id: myHome._id }).populate('user');
+    console.log(myHome);
+    const home = await Home.findById(myHome._id).populate('user');
 
     return home;
 }
 
 const createRoom = async(root, args) => {
     let newRoom = new Room({
-        name: args.data.category,
+        name: args.data.name,
         createdAt: args.data.createdAt,
         home: args.data.home
     });
     const myRoom = await newRoom.save();
-    const room = await Room.find({ _id: myRoom._id }).populate('home');
+    console.log(myRoom);
+    const room = await Room.findById(myRoom._id).populate('home');
 
     return room;
 }
@@ -58,7 +60,8 @@ const createDevice = async(root, args) => {
         room: args.data.room
     });
     const myDevice = await newDevice.save();
-    const device = await Device.find({ _id: myDevice._id }).populate('category').populate('room');
+    console.log(myDevice);
+    const device = await Device.findById(myDevice._id).populate('category').populate('room');
 
     return device;
 }
