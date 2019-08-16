@@ -1,4 +1,4 @@
-import { Component, Input,OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-floatin-action-button',
@@ -15,7 +15,13 @@ export class FloatinActionButtonComponent implements OnInit {
   }
 
   addElement() {
-    console.log(this.model);
+    if (this.model.toLowerCase() === 'home') {
+
+    } else if (this.model.toLowerCase() === 'room') {
+
+    } else if (this.model.toLowerCase() === 'device') {
+
+    }
   }
 
 }
