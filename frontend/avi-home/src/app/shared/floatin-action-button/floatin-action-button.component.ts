@@ -16,11 +16,11 @@ export class FloatinActionButtonComponent implements OnInit {
 
   addElement() {
     if (this.model.toLowerCase() === 'home') {
-
+      (<any>$('#addModalHome')).modal('show'); 
     } else if (this.model.toLowerCase() === 'room') {
-
+      (<any>$('#addModalRoom')).modal('show');
     } else if (this.model.toLowerCase() === 'device') {
-
+      (<any>$('#addModalDevice')).modal('show');
     }
   }
 
