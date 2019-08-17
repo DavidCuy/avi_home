@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { RoomService } from '../../services/room.service';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-rooms',
@@ -15,6 +16,7 @@ export class RoomsComponent implements OnInit {
 
   constructor(private _router: Router,
               private _activatedRoute: ActivatedRoute,
+              private _deviceService: DeviceService,
               private _roomServices: RoomService) { }
 
   ngOnInit() {
@@ -32,5 +34,12 @@ export class RoomsComponent implements OnInit {
 
   deleteRoom(id) {
     swal(id);
+  }
+
+  updateValue(event, id) {
+    const value = event.target.checked ? 1 : 0;
+    this._deviceService.updateDevice(id, value).subscribe((resp) => {
+      console.log(resp);
+    })
   }
 }

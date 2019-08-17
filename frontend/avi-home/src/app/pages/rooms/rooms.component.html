@@ -23,13 +23,13 @@
                     <div class="content">
                         <div class="d-flex align-items-center">
                             <div>
-                                <h6 class="product-name">{{ device.name }} - {{ device.id }}</h6>
+                                <h6 class="product-name">{{ device.name }}</h6>
                                 <div class="badge badge-success">Cat generica</div>
                             </div>
                             <div class="ml-auto">
                                 <div class="br-wrapper">
                                     <label class="switch switch-sm">
-                                        <input type="checkbox" [checked]="device.value">
+                                        <input type="checkbox" [checked]="device.value" (change)="updateValue($event, device.id)">
                                         <span class="slider round"></span>
                                       </label>
                                 </div>

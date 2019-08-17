@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { DEVICE_QUERYS } from '../graphql/device.gql';
+import { DEVICE_QUERYS, DEVICE_MUTATORS } from '../graphql/device.gql';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -19,6 +19,21 @@ export class DeviceService {
     }).pipe(map( (resp) => {
       // @ts-ignore
       return resp.data.Devices;
+    }));
+  }
+
+  updateDevice(deviceId: string, newValue: number) {
+    return this._apollo.mutate({
+      mutation: DEVICE_MUTATORS.UpdateDevice,
+      variables: {
+        dataUDevice: {
+          id: deviceId,
+          value: newValue
+        }
+      }
+    }).pipe(map( (resp) => {
+      // @ts-ignore
+      return resp.data;
     }));
   }
 }

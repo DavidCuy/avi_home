@@ -21,13 +21,12 @@ export const DEVICE_QUERYS = {
 };
 
 export const DEVICE_MUTATORS = {
-  login: gql`
-    query HomeQuery($userId: String!) {
-      Homes(name: $userId) {
-        id
-        name
-        location
-      }
+  UpdateDevice: gql`
+    mutation UpdateDevice($dataUDevice:inputDeviceUpdate!){
+      updateDevice(data: $dataUDevice){
+      name
+      value
     }
+  }
   `
 };
