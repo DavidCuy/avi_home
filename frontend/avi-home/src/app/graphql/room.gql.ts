@@ -10,6 +10,11 @@ export const ROOM_QUERYS = {
           id
           name
         }
+        devices {
+          id
+          name
+          value
+        }
       }
     }
     `

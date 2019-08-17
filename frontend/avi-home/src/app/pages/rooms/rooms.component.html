@@ -1,7 +1,7 @@
 <div class="row">
     <div *ngFor="let room of rooms" class="col-lg-4 col-md-6 col-sm-12 grid-margin stretch-card">
         <div class="card review-card">
-            <div class="card-header header-sm d-flex justify-content-between align-items-center">
+            <div class="card-header header-sm d-flex justify-content-between align-items-center" (click)="showDevices(room.id)" style="cursor: pointer">
                 <h4 class="card-title">{{ room.name}}</h4>
                 <div class="wrapper d-flex align-items-center">
                     <div class="dropdown">
@@ -16,64 +16,20 @@
                 </div>
             </div>
             <div class="card-body no-gutter">
-                <div class="list-item">
+                <div class="list-item" *ngFor="let device of room.devices">
                     <div class="preview-image">
                         <img class="img-sm rounded-circle" src="/assets/images/dashboard/house_2.jpg" alt="profile image">
                     </div>
                     <div class="content">
                         <div class="d-flex align-items-center">
                             <div>
-                                <h6 class="product-name">Ventilador</h6>
-                                <div class="badge badge-success">Categoría</div>
+                                <h6 class="product-name">{{ device.name }}</h6>
+                                <div class="badge badge-success">Cat generica</div>
                             </div>
                             <div class="ml-auto">
                                 <div class="br-wrapper">
                                     <label class="switch switch-sm">
-                                        <input type="checkbox">
-                                        <span class="slider round"></span>
-                                      </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="preview-image">
-                        <img class="img-sm rounded-circle" src="/assets/images/dashboard/house_2.jpg" alt="profile image">
-                    </div>
-                    <div class="content">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h6 class="product-name">Otra cosa</h6>
-                                <div class="badge badge-success">Categoría</div>
-                            </div>
-                            <div class="ml-auto">
-                                <div class="br-wrapper">
-                                    <label class="switch switch-sm">
-                                        <input type="checkbox">
-                                        <span class="slider round"></span>
-                                      </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="preview-image">
-                        <img class="img-sm rounded-circle" src="/assets/images/dashboard/house_2.jpg" alt="profile image">
-                    </div>
-                    <div class="content">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h6 class="product-name">Luz 1</h6>
-                                <div class="badge badge-success">Categoría</div>
-                            </div>
-                            <div class="ml-auto">
-                                <div class="br-wrapper">
-                                    <label class="switch switch-sm">
-                                        <input type="checkbox">
+                                        <input type="checkbox" [checked]="device.value" (change)="updateValue($event, device.id)">
                                         <span class="slider round"></span>
                                       </label>
                                 </div>

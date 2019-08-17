@@ -1,1 +1,105 @@
 <div class="fab app-dark-color" (click)="addElement()"> + </div>
+
+    <!-- Modal Add Home-->
+    <div class="modal fade" id="addModalHome">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Hogar</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="addModalHomeName">Nombre*</label>
+                                    <input type="text" class="form-control" id="addModalHomeName" placeholder="Nombre" maxlength="255">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="addModalHomeLoc">Ubicación*</label>
+                                    <input type="text" class="form-control" id="addModalHomeLoc" placeholder="Ubicación" maxlength="255">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success mr-2" id="btnSubmitAddHome">Aceptar</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Add Room-->
+    <div class="modal fade" id="addModalRoom">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Cuarto</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="addModalRoomName">Nombre*</label>
+                                    <input type="text" class="form-control" id="addModalRoomName" placeholder="Nombre" maxlength="255">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success mr-2" id="btnSubmitAddRoom">Aceptar</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Add Device-->
+    <div class="modal fade" id="addModalDevice">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Dispositivo</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="forms-sample">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="addModalDeviceName">Nombre*</label>
+                                    <input type="text" class="form-control" id="addModalDeviceName" placeholder="Nombre" maxlength="255">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Categoría*</label>
+                                    <select class="form-control" id="addModalDeviceCat"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success mr-2" id="btnSubmitAddDevice">Aceptar</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
