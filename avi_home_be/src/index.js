@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGOURI, { useNewUrlParser: true }, (err) => {
 });
 
 const { Homes, Rooms, Devices, Categories, UsersList } = require('./resolvers/Querys');
-const { createUsers, createHome, createRoom, createCategory, createDevice, login } = require('./resolvers/Mutations');
+const { createUsers, createHome, createRoom, createCategory, createDevice, updateDevice, login } = require('./resolvers/Mutations');
 
 const resolvers = {
     Query: {
@@ -35,6 +35,7 @@ const resolvers = {
         createRoom,
         createCategory,
         createDevice,
+        updateDevice,
         login
     }
 };
@@ -50,6 +51,6 @@ const schema = makeExecutableSchema({
 //Variable constante para el server de GraphQL
 const server = new GraphQLServer({
     schema,
-    context: async({ request }) => verifyToken(request)
+    //context: async({ request }) => verifyToken(request)
 })
 server.start(() => console.log('Server is running on localhost:4000'))

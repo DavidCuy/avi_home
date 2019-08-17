@@ -66,6 +66,11 @@ const createDevice = async(root, args) => {
     return device;
 }
 
+const updateDevice = async(root, args) => {
+    const device =  await Device.findByIdAndUpdate(args.data.id, { $set: { value: args.data.value }})
+    return device;
+}
+
 const login = async(root, args) => {
     const authenticate = await authenticated(args).catch((err) => {
         return JSON.parse(err.message)
@@ -92,5 +97,6 @@ module.exports = {
     createRoom,
     createCategory,
     createDevice,
+    updateDevice,
     login
 }
